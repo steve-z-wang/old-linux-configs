@@ -1,0 +1,94 @@
+-- Xmobar config
+
+-- layout rule: 
+-- " "  between two things of one subject
+-- "  " between two subject (plugins, "|", screen border, workspace indictor)
+-- "|"  devide two groups of subjects  
+        
+
+Config 
+    { 
+    
+    -- Appearance
+      font      = "xft:DejaVusansMono:size=8:antialias=true:hinting=true"
+    , bgColor   = "#bbbbbb"
+    , fgColor   = "#000000"
+    , alpha     = 255
+    , position  = Top
+    , border    = NoBorder 
+
+    -- Layout
+    , sepChar   =  "%"
+    , alignSep  = "}{"
+    , template  = "  %StdinReader% } %date% { %cpu%  %memory%  %swap%  <fc=#555555>|</fc>  %battery%  "
+
+    -- General behavior
+    , lowerOnStart      = True  -- send to bottom of window stack on start
+    , hideOnStart       = False -- start with window unmapped (hidden)
+    , allDesktops       = True  -- show on all desktops
+    , overrideRedirect  = True  -- set the Override Redirect flag (Xlib)
+    , pickBroadest      = False -- choose widest display (multi-monitor)
+    , persistent        = True  -- enable/disable hiding (True = disabled)
+
+    -- Plugins
+    commands = 
+        [ 
+        -- Windows indicator
+          Run StdinReader
+
+        -- Time and date indicator 
+        , Run Date "%Y %m %d %H %M %S" "date" 10
+
+        -- Cpu activity monitor
+        , Run Cpu 
+            [ "--template"  , "Cpu <total>"
+            , "--Low"       , "10"
+            , "--High"      , "50"
+            , "--low"       , "#000000"
+            , "--normal"    , "#fa2572"
+            , "--high"      , "#fa2573"
+            ] 10
+
+        -- Memory usage monitor
+        , Run Memory 
+            [ "--template"  , "Mem <usedratio>"
+            , "--Low"       , "20"
+            , "--High"      , "80"
+            , "--low"       , "#000000"
+            , "--normal"    , "#fa2572"
+            , "--high"      , "#fa2573"
+            ] 10
+
+        -- Swap usage monitor
+        , Run Swap 
+            [ "--template"  , "Swap <usedratio>"
+            , "--Low"       , "20"
+            , "--High"      , "80"
+            , "--low"       , "#000000"
+            , "--normal"    , "#fa2572"
+            , "--high"      , "#fa2573"
+            ] 10
+
+        -- Battery monitor
+        , Run Battery 
+            [ "--template"  , "Bat <acstatus>"
+            , "--Low"       , "20"
+            , "--High"      , "80"
+            , "--low"       , "#fa2573"
+            , "--normal"    , "#000000"
+            , "--high"      , "#000000"
+                
+            -- battery specific options
+            , "--"
+                
+            -- discharging status
+            , "-o" , "<left>"
+                
+            -- AC "on" status
+            , "-O" , "<fc=#000000>Charging</fc>"
+                
+            -- charged status
+            , "-i" , "<fc=#000000>Charged</fc>"
+            ] 50
+    ]
+}

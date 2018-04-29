@@ -1,0 +1,60 @@
+! Xresources 
+
+! X font setting 
+Xft.dpi:        210
+Xft.antialias:  true
+Xft.autohint:   true
+Xft.hinting:    true
+Xft.hintstyle:	hintful
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+
+! X cursor 
+Xcursor.theme: adwaita
+Xcursor.size:  30
+
+! colors 
+*.foreground:  #bbbbbb
+*.background:  #121212
+*.cursorColor: #bbbbbb
+! Black
+*.color0:      #121212
+*.color8:      #555555
+! Red
+*.color1:      #fa2573
+*.color9:      #f6669d
+! Green
+*.color2:      #98e123
+*.color10:     #b1e05f
+! Yellow
+*.color3:      #dfd460
+*.color11:     #fff26d
+! Blue
+*.color4:      #1080d0
+*.color12:     #00afff
+! Magenta
+*.color5:      #8700ff
+*.color13:     #af87ff
+! Cyan
+*.color6:      #43a8d0
+*.color14:     #51ceff
+! White
+*.color7:      #bbbbbb
+*.color15:     #ffffff
+! Bold, Italic, Underline
+*.colorBD:     #ffffff
+
+! URxvt
+! Basic
+URxvt.font: xft:DejaVuSansMono:size=8:antialias=true:hinting=true
+URxvt.scrollBar:    False
+URxvt.visualBell:   True 
+URxvt.depth:        32
+URxvt.background:   [75]#000000
+
+!! Extensions
+URxvt.perl-ext-common:	resize-font
+!! resize-font
+URxvt.resize-font.smaller:	C-minus
+URxvt.resize-font.bigger:	C-equal 
+URxvt.resize-font.reset:    C-plus 
