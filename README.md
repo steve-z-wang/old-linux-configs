@@ -1,2 +1,2 @@
-my old linux config 
+My old linux config 
 
